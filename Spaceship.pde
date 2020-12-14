@@ -36,19 +36,27 @@ class Spaceship extends GameObject{
   void act(){
   super.act();
   
-  int i = 0;
-  while(i < myObjects.size()){
-  GameObject obj = myObjects.get(i);
-  if(obj instanceof EBullet){
-    if(dist(location.x, location.y, obj.location.x, obj.location.y)<=size/2+obj.size && t<=0){
-      obj.lives = 0;
-      lives--;
-      t = 500;
+   t--;
+
+    int i = 0;
+    while (i < myObjects.size()) {
+      GameObject obj = myObjects.get(i);
+      if (obj instanceof EBullet) {
+        if (dist(location.x, location.y, obj.location.x, obj.location.y)<=size/2+obj.size && t<=0) {
+          obj.lives = 0;
+          lives--;
+          t = 60;
+        }
+      }
+      if (obj instanceof Asteroid) {
+        if (dist(location.x, location.y, obj.location.x, obj.location.y)<=size/2+obj.size && t<=0) {    
+          lives--;
+          t = 60;
+        }
+      }
+
+      i++;
     }
-  }
-  t--;
-  i++;
-  }
   
   if (lives == 0){
     mode = GAMEOVER;
