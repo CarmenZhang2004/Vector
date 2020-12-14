@@ -5,6 +5,8 @@ class Enemy extends GameObject{
   int shotTimer, threshold;
   
   Enemy(){
+    e = random(0, 4);
+  
     if (e>=0 && e<1) {
     location = new PVector (random(50, 750), -size/2);
     velocity = new PVector (0, 2);
@@ -18,8 +20,6 @@ class Enemy extends GameObject{
     location = new PVector (width+size/2, random(50, 750));
     velocity = new PVector (-2, 0);
     }
-
-    e = random(0, 4);
     
     size = 30;
     lives = 1;
