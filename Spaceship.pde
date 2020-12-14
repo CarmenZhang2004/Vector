@@ -49,7 +49,7 @@ class Spaceship extends GameObject{
         }
       }
       if (obj instanceof Asteroid) {
-        if (dist(location.x, location.y, obj.location.x, obj.location.y)<=size/2+obj.size && t<=0) {    
+        if (dist(location.x, location.y, obj.location.x, obj.location.y)<size/2+obj.size && t<=0) {    
           lives--;
           t = 60;
         }
